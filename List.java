@@ -29,19 +29,40 @@ public class List {
 
     /** GIVE Adds a CharData object with the given character to the beginning of this list. */
     public void addFirst(char chr) {
-        // Your code goes here
+        Node newNode = new Node(chr);
+        newNode.next = first;
+        first = newNode;
+        size++;
     }
     
     /** GIVE Textual representation of this list. */
     public String toString() {
-        // Your code goes here
+        if(size == 0) {
+            return "()";
+        }
+        String str = "(";
+        Node current = first;
+        while(current != null) {
+            str += current.value.toString();
+            current = current.next;
+        }
+        return str.substring(0, str.length() - 1) + ")";
     }
 
     /** Returns the index of the first CharData object in this list
      *  that has the same chr value as the given char,
      *  or -1 if there is no such object in this list. */
     public int indexOf(char chr) {
-        // Your code goes here
+        Node current = first;
+        int index = 0;
+        while(current != null) {
+            if(current.value == chr) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
     }
 
     /** If the given character exists in one of the CharData objects in this list,
