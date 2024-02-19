@@ -78,6 +78,7 @@ public class List {
      *  true. Otherwise, returns false. */
     public boolean remove(char chr) {
         // Your code goes here
+        return;
     }
 
     /** Returns the CharData object at the specified index in this list. 
@@ -85,6 +86,7 @@ public class List {
      *  throws an IndexOutOfBoundsException. */
     public CharData get(int index) {
         // Your code goes here
+        return;
     }
 
     /** Returns an array of CharData objects, containing all the CharData objects in this list. */
