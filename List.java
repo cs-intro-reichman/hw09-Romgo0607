@@ -99,7 +99,7 @@ public class List {
         } else {
             prev.next = current.next;
             size--;
-        }
+        }//
         return true;
     }
 
