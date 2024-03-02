@@ -5,10 +5,6 @@
  *  mention the existence of the Node objects). */
 public class List {
 
-    public static void main(String[] args){
-        
-    }
-
     // Points to the first node in this list
     private Node first;
 
@@ -24,6 +20,10 @@ public class List {
     /** Returns the number of elements in this list. */
     public int getSize() {
  	      return size;
+    }
+    /** Returns the first Node of this list. */
+    public Node getFirstNode() {
+        return first;
     }
 
     /** Returns the first element in the list */
@@ -72,6 +72,16 @@ public class List {
             index++;
         }
         return -1;
+    }
+
+    /** Returns number of letters in this list */
+    public int countTotalLetters() {
+        ListIterator ListOfLetters = this.listIterator(0);
+        int count = 0;
+        while (ListOfLetters.hasNext() == true) {
+            count += (ListOfLetters.next().count);
+        }
+        return count;
     }
 
     /** If the given character exists in one of the CharData objects in this list,
