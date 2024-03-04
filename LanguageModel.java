@@ -39,7 +39,19 @@ public class LanguageModel {
         for(int i = 0;i < windowLength ;i++) {
             window = window+in.readChar();
         }
-        
+        while(in.isEmpty() == false) {
+            chr = in.readChar();
+            List probs = CharDataMap.get(window);
+            if(probs == null) {
+                probs = new List();
+                CharDataMap.put(window, probs);
+            }
+            probs.update(chr);
+            window = window.substring(1) + chr; 
+        }
+        for(List probs:CharDataMap.values()){
+            calculateProbabilities(probs);
+        }
 	}
 
     // Computes and sets the probabilities (p and cp fields) of all the
@@ -79,7 +91,21 @@ public class LanguageModel {
 	 * @return the generated text
 	 */
 	public String generate(String initialText, int textLength) {
-		// Your code goes here
+		String window = initialText.substring(initialText.length() - windowLength);
+        String generated = window;
+        if(initialText.length() < windowLength) {
+            return initialText;
+        }
+        while(generated.length() < (windowLength + textLength)) {
+            List probs = CharDataMap.get(window);
+            if (probs == null) {
+               return window;
+            }
+            char chr = getRandomChar(probs);
+            generated += chr;
+            window = generated.substring(generated.length() - windowLength);
+        }
+        return generated;
 	}
 
     /** Returns a string representing the map of this language model. */
