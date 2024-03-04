@@ -74,13 +74,13 @@ public class LanguageModel {
         Node current = probs.getFirstNode();
 		double r = randomGenerator.nextDouble();
         int index = 0;
-        char chr = 'a';
+        char c = 'a';
         while(current.cp.cp < r) {
             index++;
             current = current.next;
         }
-        chr = current.cp.chr;
-        return chr;
+        c = current.cp.chr;
+        return c;
 	}
 
     /**
