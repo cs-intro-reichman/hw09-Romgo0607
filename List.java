@@ -55,7 +55,8 @@ public class List {
             }
             current = current.next;
         }
-        return str.substring(0, str.length() - 1) + ")";
+        str += ")";
+        return str.toString();
     }
 
     /** Returns the index of the first CharData object in this list
