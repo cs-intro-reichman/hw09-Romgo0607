@@ -72,7 +72,7 @@ public class LanguageModel {
 	public char getRandomChar(List probs) {
         calculateProbabilities(probs);
         Node current = probs.getFirstNode();
-		double r = randomGenerator.nextDouble();
+		double r = 
         int index = 0;
         char chr = 'a';
         while(current.cp.cp < r) {
